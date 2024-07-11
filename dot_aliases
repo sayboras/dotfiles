@@ -1,0 +1,62 @@
+# Alias
+## Colorize the ls output ##
+alias ls='ls --color=auto'
+
+## Use a long listing format ##
+alias ll='ls -la'
+
+## Show hidden files ##
+alias l.='ls -d .* --color=auto'
+
+alias gg='cd ~/go/src/github.com/'
+alias gz='cd ~/go/src/github.com/cilium/cilium'
+alias kall='kubectl get all --all-namespaces'
+alias k='kubectl'
+alias ss='aws ssm start-session --target'
+alias watch='watch '
+alias n='nvim'
+alias nv='nordvpn'
+alias rg='rg -g "!vendor/" -i'
+
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+
+# Minikube related
+alias ms='minikube start --network-plugin=cni --cni=false --cpus=6 --memory=64g --docker-opt "default-ulimit=nofile=102400:102400"'
+alias msd='minikube start --network-plugin=cni --cni=false --cpus=4 --memory=8g -p minikube-docker --docker-opt "default-ulimit=nofile=102400:102400"'
+alias msv='minikube start  --network-plugin=cni --cni=false --cpus=4 --memory=8g --driver virtualbox -p minikube-vb'
+alias mssh='minikube ssh'
+alias mt='minikube tunnel'
+
+# github related
+alias rv='gh repo view -w'
+alias pv='gh pr view -w'
+alias pc='gh pr checks'
+alias t='gh pr comment -b "/test"'
+alias t15='gh pr comment -b "/test-backport-1.15"'
+alias t14='gh pr comment -b "/test-backport-1.14"'
+alias t13='gh pr comment -b "/test-backport-1.13"'
+alias t16='gh pr comment -b "/test-backport-1.16"'
+alias tgw='gh pr comment -b "/ci-gateway-api"'
+
+alias kctx='kubectx'
+alias kns='kubens'
+
+alias jqs='jq .status'
+alias jqd="jq 'del(.metadata.managedFields)'"
+alias jqc='jq .status.conditions'
+
+alias bose='bluetoothctl connect 4C:87:5D:57:1D:7C'
+alias bosed='bluetoothctl disconnect 4C:87:5D:57:1D:7C'
+
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+
+# Kube related config
+[ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases
+source <(kubectl completion zsh)
+complete -F __start_kubectl k
+
+# AWS related config
+[ -f ~/.local/bin/aws_zsh_completer.sh ] && source .local/bin/aws_zsh_completer.sh
+

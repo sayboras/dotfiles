@@ -1,0 +1,12 @@
+# Go related parameters
+export GOPATH=~/go
+export GOBIN=~/go/bin
+export PATH=$GOBIN:$CLANG_PATH:~/.local/bin:$PATH
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# Disable GIT_SSL_NO_VERIFY
+export GIT_SSL_NO_VERIFY=true
+
+export KUBE_EDITOR=nvim
+
+export BAT_THEME=tokyonight_night

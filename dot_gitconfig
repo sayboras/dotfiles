@@ -1,0 +1,56 @@
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+
+# default case
+[include]
+  	path = ~/.config/git/personal
+
+# when working with cilium repos
+[includeIf "gitdir:**/cilium/**/.git"]
+  	path = ~/.config/git/cilium
+
+# when working with isovalent repos
+[includeIf "gitdir:**/isovalent/**/.git"]
+  	path = ~/.config/git/work
+
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	one = log --oneline --since=1week
+
+[core]
+	excludesfile = ~/.gitignore
+	autocrlf = input
+	editor = nvim 
+
+[http]
+	cookiefile = ~/.gitcookies
+	
+[commit]
+  gpgsign = true
+
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    side-by-side = true
+
+    # delta detects terminal colors automatically; set one of these to disable auto-detection
+    # dark = true
+    # light = true
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default

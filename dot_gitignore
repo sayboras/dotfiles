@@ -1,0 +1,6 @@
+Tiltfile*
+.idea
+sysdump/**
+local/**
+**.debug
+temp*
