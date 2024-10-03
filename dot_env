@@ -1,12 +1,19 @@
 # Go related parameters
 export GOPATH=~/go
 export GOBIN=~/go/bin
-export PATH=$GOBIN:$CLANG_PATH:~/.local/bin:$PATH
+export RUSTBIN=/home/tammach/.cargo/bin
+export PATH=$GOBIN:$RUSTBIN:$CLANG_PATH:~/.local/bin:$PATH
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="$HOME/.local/share/mise/shims:$PATH"
 
 # Disable GIT_SSL_NO_VERIFY
 export GIT_SSL_NO_VERIFY=true
 
 export KUBE_EDITOR=nvim
+export EDITOR=nvim
 
 export BAT_THEME=tokyonight_night
+
+# AWS related variables
+export AWS_PAGER=""
+export AWS_PROFILE=cilium-dev

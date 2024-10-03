@@ -23,7 +23,7 @@
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango: Noto Sans Regular 11 
+font pango: Noto Sans Regular 11
 
 # set the mod key to the winkey:
 set $mod Mod4
@@ -170,7 +170,8 @@ mode "resize" {
 ######################################
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id xfce4-terminal
+#bindsym $mod+Return exec --no-startup-id xfce4-terminal
+bindsym $mod+Return exec --no-startup-id wezterm
 
 # kill focused window
 bindsym $mod+q kill
@@ -182,7 +183,7 @@ bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/powermenu
 # lock with a picture:
 #bindsym $mod+Shift+l exec --no-startup-id i3lock -i  ~/.config/i3/i3-lock-screen.png -p default|win -t
 # lock by blurring the screen:
-bindsym $mod+Shift+l exec --no-startup-id ~/.config/i3/scripts/blur-lock
+# bindsym $mod+Shift+l exec --no-startup-id ~/.config/i3/scripts/blur-lock
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -206,8 +207,8 @@ bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/i3/scripts/volume_b
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
-bindsym $mod+b focus up
-bindsym $mod+o focus right
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -218,8 +219,8 @@ bindsym $mod+Right focus right
 # move focused window
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
-bindsym $mod+Shift+b move up
-bindsym $mod+Shift+o move right
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -276,7 +277,7 @@ bindsym XF86AudioMute exec --no-startup-id ~/.config/i3/scripts/volume_brightnes
 bindsym XF86AudioMicMute exec amixer sset Capture toggle
 
 # audio control
-bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause 
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 # Above line will also work for pausing
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
@@ -298,11 +299,16 @@ bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/power-profiles
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:"
-set $ws2 "2:"
-set $ws3 "3:"
-set $ws4 "4:"
-set $ws5 "5:"
+#set $ws1 "1:"
+#set $ws2 "2:"
+#set $ws3 "3:"
+#set $ws4 "4:"
+#set $ws5 "5:"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
@@ -317,14 +323,21 @@ set $ws10 "10"
 #workspace $ws3 output HDMI-0
 #workspace $ws4 output HDMI-0
 #workspace $ws5 output HDMI-0
+workspace $ws1 output HDMI-A-0
+workspace $ws2 output HDMI-A-0
+workspace $ws3 output HDMI-A-1
+workspace $ws4 output HDMI-A-1
+workspace $ws5 output DisplayPort-0
+workspace $ws6 output DisplayPort-0
 
 # bind program to workspace and focus to them on startup:
-assign [class="Slack"] $ws1
-assign [class="Xfce4-terminal"] $ws3
+assign [class="Slack"] $ws5
+#assign [class="Xfce4-terminal"] $ws3
 #assign [class="(?i)firefox"] $ws2
 assign [class="Thunar"] $ws3
 assign [class="thunderbird"] $ws4
 assign [class="TelegramDesktop"] $ws5
+assign [class="Spotify"] $ws7
 
 # automatic set focus new window if it opens on another workspace than the current:
 for_window [class=Xfce4-terminal] focus
@@ -332,6 +345,7 @@ for_window [class=(?i)firefox] focus
 for_window [class=Thunar] focus
 for_window [class=Thunderbird] focus
 for_window [class=TelegramDesktop] focus
+for_window [class="^.*"] border pixel 4
 
 ##############
 # compositor #
@@ -353,10 +367,10 @@ for_window [class=TelegramDesktop] focus
 #
 # picom: https://wiki.archlinux.org/title/Picom
 # manpage: https://man.archlinux.org/man/picom.1.en
-# The default configuration is available in /etc/xdg/picom.conf 
+# The default configuration is available in /etc/xdg/picom.conf
 # For modifications, it can be copied to ~/.config/picom/picom.conf or ~/.config/picom.conf
 # install picom package (yay -S picom)
-# start using default config 
+# start using default config
 #exec_always --no-startup-id picom -b
 #
 # for custom config:
@@ -378,7 +392,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id dex --autostart --environment i3
 
 # start welcome app
-#exec --no-startup-id sh /usr/share/endeavouros/scripts/welcome --startdelay=3 
+#exec --no-startup-id sh /usr/share/endeavouros/scripts/welcome --startdelay=3
 
 # num lock activated
 #exec --no-startup-id numlockx on
@@ -416,7 +430,7 @@ exec --no-startup-id xset s 480 dpms 600 600 600
 # dunst config used ~/.config/dunst/dunstrc
 # set alternative config if needed:
 #exec --no-startup-id /usr/bin/dunst --config ~/.config/dunst/dunstrc
-# may need to run dbus-launch explicitly: 
+# may need to run dbus-launch explicitly:
 #exec --no-startup-id dbus-launch /usr/bin/dunst
 exec --no-startup-id /usr/bin/dunst
 # alternative if you installed aside with XFCE4:
@@ -470,7 +484,7 @@ for_window [class="urxvt"] border pixel 1
 
 # set size of floating window
 #for_window [window_role="(?i)GtkFileChooserDialog"] resize set 640 480 #to set size of file choose dialog
-#for_window [class=".*"] resize set 640 480 #to change size of all floating windows 
+#for_window [class=".*"] resize set 640 480 #to change size of all floating windows
 
 # set position of floating window
 #for_window [class=".*"] move position center
@@ -494,7 +508,7 @@ set $yellowbrown	#e1b700
 
 # define colors for windows:
 #class		        	border		bground		text		indicator	child_border
-client.focused		    	$lightblue	$darkblue	$white		$mediumgrey	$mediumgrey
+client.focused		    	$lightblue	$darkblue	$white		$mediumgrey	$lightblue
 client.unfocused	    	$darkblue	$darkblue	$grey		$darkgrey	$darkgrey
 client.focused_inactive		$darkblue	$darkblue	$grey		$black		$black
 client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
