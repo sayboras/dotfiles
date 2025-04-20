@@ -3,8 +3,8 @@ export GOPATH=~/go
 export GOBIN=~/go/bin
 export RUSTBIN=/home/tammach/.cargo/bin
 export PATH=$GOBIN:$RUSTBIN:$CLANG_PATH:~/.local/bin:$PATH
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-export PATH="$HOME/.local/share/mise/shims:$PATH"
+export PATH=${KREW_ROOT:-$HOME/.krew}/bin:$PATH
+export PATH=$HOME/.local/share/mise/shims:$PATH
 
 # Disable GIT_SSL_NO_VERIFY
 export GIT_SSL_NO_VERIFY=true

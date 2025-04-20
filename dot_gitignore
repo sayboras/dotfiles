@@ -4,3 +4,6 @@ sysdump/**
 local/**
 **.debug
 temp*
+
+mise_taks/**
+mise/*

@@ -323,20 +323,20 @@ set $ws10 "10"
 #workspace $ws3 output HDMI-0
 #workspace $ws4 output HDMI-0
 #workspace $ws5 output HDMI-0
-workspace $ws1 output HDMI-A-0
-workspace $ws2 output HDMI-A-0
-workspace $ws3 output HDMI-A-1
-workspace $ws4 output HDMI-A-1
+workspace $ws1 output DP-6 
+workspace $ws2 output DP-6 
+workspace $ws3 output DP-4 
+workspace $ws4 output DP-4 
 workspace $ws5 output DisplayPort-0
 workspace $ws6 output DisplayPort-0
 
 # bind program to workspace and focus to them on startup:
-assign [class="Slack"] $ws5
+assign [class="Slack"] $ws3
 #assign [class="Xfce4-terminal"] $ws3
 #assign [class="(?i)firefox"] $ws2
 assign [class="Thunar"] $ws3
 assign [class="thunderbird"] $ws4
-assign [class="TelegramDesktop"] $ws5
+assign [class="TelegramDesktop"] $ws3
 assign [class="Spotify"] $ws7
 
 # automatic set focus new window if it opens on another workspace than the current:
@@ -405,11 +405,11 @@ exec --no-startup-id dex --autostart --environment i3
 
 # start a script to setup displays
 # uncomment the next line, use arandr to setup displays and save the file as monitor:
-exec --no-startup-id ~/.screenlayout/triple.sh
+exec --no-startup-id ~/.screenlayout/dual.sh
 
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
-exec --no-startup-id sleep 1 && feh --bg-fill /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
+exec --no-startup-id sleep 1 && feh --bg-fill /usr/share/backgrounds/gnome/symbolic-soup-d.jxl
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
@@ -526,7 +526,7 @@ bar {
 #	    	i3bar_command i3bar --transparency
 # it could be that you have no primary display set: set one (xrandr --output <output> --primary)
 # reference: https://i3wm.org/docs/userguide.html#_tray_output
-		    #tray_output primary
+		    tray_output primary
 		    tray_padding 0
 
 # When strip_workspace_numbers is set to yes,
